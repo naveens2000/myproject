@@ -1,0 +1,53 @@
+.card-body{
+    background-color:palegoldenrod;
+    height: 100% ;
+  }
+  .bg {
+ 
+    background-position: default;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #anime{
+     text-align:end;
+     font-family: Times New Roman;
+     font-style: italic;
+  }
+  .card-footer{
+    background-color: powderblue;
+    text-align: center;
+    color:black
+  }
+  #anime:after {
+      content: "";
+      animation: spin 7s infinite linear;
+  }
+  @keyframes spin{
+    0%{content:"by codebug";
+       color:blue;}
+    35%{content:"by Naveen S";
+      color:red;}
+    60%{content:"by Rachel cynthia V";
+      color:purple;}
+    100%{content:"by Priya S";
+      color:gold;}
+  }
+  #date{
+     text-align: center;
+     left: auto;
+     font-family: 'Times New Roman';
+     font-size: larger;
+     color: red;
+     display: inline;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 61%;
+    opacity:25%
+  }
+  table{
+    border-color: black;
+    border:2px;
+  }

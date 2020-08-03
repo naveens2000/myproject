@@ -1,0 +1,101 @@
+<html>
+  <head>
+      <link rel="stylesheet" type="text/css" href="home.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
+      <script>
+        function fade()
+        {
+          document.getElementById("input").style.opacity="100%";
+        }
+        imp=[];
+        uimp=[];
+        function FormSubmit(){
+          //alert("hi here");
+          todo=document.getElementById("todo").value;
+          prio=document.getElementById("prio").value;
+          if(prio==1){
+            imp.push(todo);
+          }
+          else{
+            uimp.push(todo);
+          }
+          refresh();
+        }
+        function refresh(){
+          parent=document.getElementById("output");
+          parent.innerHTML="";
+          imp.forEach(display);
+          uimp.forEach(display);
+          cen=document.createElement("center");
+          inp=document.createElement("INPUT");
+          inp.setAttribute("class","btn btn-primary");
+          inp.setAttribute("type","button");
+          inp.setAttribute("value","Delete");
+          inp.setAttribute("onclick","Delete()");
+          cen.appendChild(inp);
+          parent.appendChild(cen);
+        }
+        function display(item){
+          par=document.getElementById("output");
+          var z=document.createElement("H3");
+          z.innerHTML='<input type="checkbox" name="list" value="'+item+'">'+"  "+item;
+          par.appendChild(z);
+        }
+        function Delete(){
+          checks=[...document.querySelectorAll('input[name="list"]:checked')].map(e=>e.value);
+          console.log(checks);
+          checks.forEach(remove);
+        }
+        function remove(item){
+          var index = imp.indexOf(item);
+          if (index !== -1) imp.splice(index, 1);
+          var index = uimp.indexOf(item);
+          if (index !== -1) uimp.splice(index, 1);
+          refresh();
+        }
+      </script>  
+  </head>
+  <body>
+    <div class="card text-center">
+      <div class="container-fluid" style="background-color: palegreen;">
+        <h1 style="text-align: center;"> 
+          <strong>TO DO LIST</strong> 
+        </h1>
+        <h4 id="anime"></h4>
+      </div>
+      <div class="card-body">
+        <table width="100%" style="height: 100%;" cellpadding="10" cellspacing="0">
+          <tr>
+            <td width="20%" valign="top" style="background-color:coral; border-color: black;">
+              <div>
+                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="fade()">ADD</button><br>
+              </div>
+              <div style="height:auto; width:auto;">
+                <form id="input" style="opacity: 0%">
+                  <textarea placeholder="example:'to do webpage'" class="form-control form-control-lg" id="todo"></textarea><br>
+                  <select class="form-control form-control-lg" id="prio">
+                    <option value="">Choose priority</option>
+                    <option value="1">Important</option>
+                    <option value="2">Unimportant</option>
+                  </select><br>
+                  <input class="btn btn-primary" type="button" value="Submit" onclick="FormSubmit()">
+                  <input class="btn btn-primary" type="reset" value="Reset">
+                </form>
+              </div>
+            </td>
+            <td width="55%" valign="top" style="background-color:burlywood;">
+              <marquee><p id="date"></p>
+              <script> document.getElementById("date").innerHTML="Today is "+Date();
+              </script>
+              </marquee>
+              <form id="output" style="padding-left: 20px;">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-footer"> 
+        designed by codebug
+      </div>
+    </div>
+  </body>
+</html>
